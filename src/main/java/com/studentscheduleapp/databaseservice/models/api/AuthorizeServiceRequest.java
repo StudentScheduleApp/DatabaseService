@@ -1,4 +1,4 @@
-package com.studentscheduleapp.mailservice.models.api;
+package com.studentscheduleapp.databaseservice.models.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

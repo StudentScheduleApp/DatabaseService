@@ -1,4 +1,4 @@
-package com.studentscheduleapp.mailservice.http;
+package com.studentscheduleapp.databaseservice.http;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpRequest;

@@ -1,21 +1,15 @@
-package com.studentscheduleapp.mailservice.repos;
+package com.studentscheduleapp.databaseservice.repos;
 
-import com.studentscheduleapp.mailservice.http.HeaderRequestInterceptor;
-import com.studentscheduleapp.mailservice.models.api.AuthorizeServiceRequest;
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import com.studentscheduleapp.databaseservice.models.api.AuthorizeServiceRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.logging.Logger;
-
 @Repository
-public class ServiceTokenRepository  {
+public class ServiceTokenRepository {
 
     @Value("${ip.identityservice}")
     private String identityService;

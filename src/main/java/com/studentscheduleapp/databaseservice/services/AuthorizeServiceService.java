@@ -1,6 +1,6 @@
-package com.studentscheduleapp.mailservice.services;
+package com.studentscheduleapp.databaseservice.services;
 
-import com.studentscheduleapp.mailservice.repos.ServiceTokenRepository;
+import com.studentscheduleapp.databaseservice.repos.ServiceTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

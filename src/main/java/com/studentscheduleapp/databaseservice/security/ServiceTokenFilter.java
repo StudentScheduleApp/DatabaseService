@@ -1,7 +1,7 @@
-package com.studentscheduleapp.mailservice.security;
+package com.studentscheduleapp.databaseservice.security;
 
 
-import com.studentscheduleapp.mailservice.services.AuthorizeServiceService;
+import com.studentscheduleapp.databaseservice.services.AuthorizeServiceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

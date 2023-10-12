@@ -1,6 +1,6 @@
-package com.studentscheduleapp.mailservice.config;
+package com.studentscheduleapp.databaseservice.config;
 
-import com.studentscheduleapp.mailservice.http.HeaderRequestInterceptor;
+import com.studentscheduleapp.databaseservice.http.HeaderRequestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;

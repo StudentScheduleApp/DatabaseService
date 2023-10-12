@@ -1,4 +1,4 @@
-package com.studentscheduleapp.mailservice.security;
+package com.studentscheduleapp.databaseservice.security;
 
 
 import lombok.Getter;
