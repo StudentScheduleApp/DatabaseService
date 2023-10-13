@@ -9,4 +9,5 @@ import java.util.Optional;
 
 public interface ScheduleTemplateRepository extends JpaRepository<ScheduleTemplate, Long> {
 
+    List<ScheduleTemplate> findByGroupId(long id);
 }

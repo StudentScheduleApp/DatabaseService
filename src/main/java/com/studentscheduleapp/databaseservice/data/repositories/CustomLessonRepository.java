@@ -8,5 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CustomLessonRepository extends JpaRepository<CustomLesson, Long> {
+    List<CustomLesson> findByGroupId(Long id);
 
 }
