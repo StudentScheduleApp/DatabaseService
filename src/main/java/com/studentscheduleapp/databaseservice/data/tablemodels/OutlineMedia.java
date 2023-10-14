@@ -21,7 +21,7 @@ public class OutlineMedia {
     private long timestamp;
     @Column(name = "outline_id", nullable = false)
     private long outlineId;
-    @Column(name = "image_id", nullable = false)
-    private long imageId;
+    @Column(name = "image_url", nullable = false)
+    private String imageUrl;
 
 }

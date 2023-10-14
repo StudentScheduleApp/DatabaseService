@@ -9,4 +9,7 @@ import java.util.Optional;
 
 public interface OutlineRepository extends JpaRepository<Outline, Long> {
 
+    List<Outline> findBySpecificLessonId(long id);
+
+    List<Outline> findByUserId(long id);
 }

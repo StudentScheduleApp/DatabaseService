@@ -9,4 +9,5 @@ import java.util.Optional;
 
 public interface OutlineMediaCommentRepository extends JpaRepository<OutlineMediaComment, Long> {
 
+    List<OutlineMediaComment> findByMediaId(long id);
 }
