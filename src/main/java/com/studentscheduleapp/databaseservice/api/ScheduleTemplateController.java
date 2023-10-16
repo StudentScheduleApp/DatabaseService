@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/scheduleTemplate")
+@RequestMapping("api/scheduleTemplates")
 public class ScheduleTemplateController {
 
     @Autowired
