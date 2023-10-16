@@ -19,8 +19,8 @@ public class Group {
     private long id;
     @Column(name = "chat_id", nullable = false)
     private long chatId;
-    @Column(name = "ava_id", nullable = false)
-    private long avaId;
+    @Column(name = "ava_url", nullable = false)
+    private long avaUrl;
     @Column(name = "name", nullable = false)
     private String name;
 
