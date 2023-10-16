@@ -9,4 +9,5 @@ import java.util.Optional;
 
 public interface SpecificLessonRepository extends JpaRepository<SpecificLesson, Long> {
 
+    List<SpecificLesson> findByGroupId(long id);
 }

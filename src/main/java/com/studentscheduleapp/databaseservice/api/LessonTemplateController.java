@@ -2,6 +2,7 @@ package com.studentscheduleapp.databaseservice.api;
 
 import com.studentscheduleapp.databaseservice.data.repositories.GroupRepository;
 import com.studentscheduleapp.databaseservice.data.repositories.LessonTemplateRepository;
+import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
 import com.studentscheduleapp.databaseservice.data.tablemodels.Group;
 import com.studentscheduleapp.databaseservice.data.tablemodels.LessonTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,10 @@ public class LessonTemplateController {
     @PostMapping("save")
     public ResponseEntity<LessonTemplate> save(@RequestBody LessonTemplate data){
         return ResponseEntity.ok(lessonTemplateRepository.save(data));
+    }
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<List<CustomLesson>> deleteById(@PathVariable("id") long id){
+        lessonTemplateRepository.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 }

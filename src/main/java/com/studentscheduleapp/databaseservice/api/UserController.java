@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/users")
 public class UserController {
@@ -26,5 +28,10 @@ public class UserController {
     @PostMapping("save")
     public ResponseEntity<User> save(@RequestBody User data){
         return ResponseEntity.ok(userRepository.save(data));
+    }
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<List<CustomLesson>> deleteById(@PathVariable("id") long id){
+        userRepository.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 }

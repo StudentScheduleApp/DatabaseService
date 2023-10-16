@@ -32,4 +32,9 @@ public class CustomLessonController {
     public ResponseEntity<CustomLesson> save(@RequestBody CustomLesson data){
         return ResponseEntity.ok(customLessonRepository.save(data));
     }
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<List<CustomLesson>> deleteById(@PathVariable("id") long id){
+        customLessonRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
 }

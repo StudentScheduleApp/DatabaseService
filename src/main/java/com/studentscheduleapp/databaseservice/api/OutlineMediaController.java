@@ -1,6 +1,7 @@
 package com.studentscheduleapp.databaseservice.api;
 
 import com.studentscheduleapp.databaseservice.data.repositories.OutlineMediaRepository;
+import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
 import com.studentscheduleapp.databaseservice.data.tablemodels.Outline;
 import com.studentscheduleapp.databaseservice.data.tablemodels.OutlineMedia;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,10 @@ public class OutlineMediaController {
     @PostMapping("save")
     public ResponseEntity<OutlineMedia> save(@RequestBody OutlineMedia data){
         return ResponseEntity.ok(outlineMediaRepository.save(data));
+    }
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<List<CustomLesson>> deleteById(@PathVariable("id") long id){
+        outlineMediaRepository.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 }

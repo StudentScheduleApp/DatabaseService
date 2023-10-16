@@ -1,6 +1,7 @@
 package com.studentscheduleapp.databaseservice.api;
 
 import com.studentscheduleapp.databaseservice.data.repositories.OutlineMediaCommentRepository;
+import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
 import com.studentscheduleapp.databaseservice.data.tablemodels.OutlineMedia;
 import com.studentscheduleapp.databaseservice.data.tablemodels.OutlineMediaComment;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,10 @@ public class OutlineMediaCommentController {
     @PostMapping("save")
     public ResponseEntity<OutlineMediaComment> save(@RequestBody OutlineMediaComment data){
         return ResponseEntity.ok(outlineMediaCommentRepository.save(data));
+    }
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<List<CustomLesson>> deleteById(@PathVariable("id") long id){
+        outlineMediaCommentRepository.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 }

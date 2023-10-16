@@ -2,6 +2,7 @@ package com.studentscheduleapp.databaseservice.api;
 
 import com.studentscheduleapp.databaseservice.data.repositories.MemberRepository;
 import com.studentscheduleapp.databaseservice.data.repositories.OutlineRepository;
+import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
 import com.studentscheduleapp.databaseservice.data.tablemodels.Member;
 import com.studentscheduleapp.databaseservice.data.tablemodels.Outline;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,10 @@ public class OutlineController {
     @PostMapping("save")
     public ResponseEntity<Outline> save(@RequestBody Outline data){
         return ResponseEntity.ok(outlineRepository.save(data));
+    }
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<List<CustomLesson>> deleteById(@PathVariable("id") long id){
+        outlineRepository.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 }
