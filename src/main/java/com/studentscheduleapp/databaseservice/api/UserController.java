@@ -23,7 +23,7 @@ public class UserController {
     }
     @GetMapping("email/{email}")
     public ResponseEntity<User> getByEmail(@PathVariable("email") String email){
-        return ResponseEntity.ok(userRepository.findByEmail(email).get());
+        return ResponseEntity.ok(userRepository.findByEmail(email).orElse(null));
     }
     @PostMapping("save")
     public ResponseEntity<User> save(@RequestBody User data){
