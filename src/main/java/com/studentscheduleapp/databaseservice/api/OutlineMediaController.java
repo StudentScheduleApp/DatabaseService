@@ -19,7 +19,7 @@ public class OutlineMediaController {
 
     @GetMapping("id/{id}")
     public ResponseEntity<OutlineMedia> getById(@PathVariable("id") long id){
-        return ResponseEntity.ok(outlineMediaRepository.findById(id).get());
+        return ResponseEntity.ok(outlineMediaRepository.findById(id).orElse(null));
     }
     @GetMapping("outline/{id}")
     public ResponseEntity<List<OutlineMedia>> getByOutlineId(@PathVariable("id") long id){

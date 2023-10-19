@@ -20,7 +20,7 @@ public class ScheduleTemplateController {
 
     @GetMapping("id/{id}")
     public ResponseEntity<ScheduleTemplate> getById(@PathVariable("id") long id){
-        return ResponseEntity.ok(scheduleTemplateRepository.findById(id).get());
+        return ResponseEntity.ok(scheduleTemplateRepository.findById(id).orElse(null));
     }
     @GetMapping("group/{id}")
     public ResponseEntity<List<ScheduleTemplate>> getByGroupId(@PathVariable("id") long id){

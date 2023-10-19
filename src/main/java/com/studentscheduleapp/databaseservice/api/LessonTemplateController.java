@@ -20,7 +20,7 @@ public class LessonTemplateController {
 
     @GetMapping("id/{id}")
     public ResponseEntity<LessonTemplate> getById(@PathVariable("id") long id){
-        return ResponseEntity.ok(lessonTemplateRepository.findById(id).get());
+        return ResponseEntity.ok(lessonTemplateRepository.findById(id).orElse(null));
     }
     @GetMapping("scheduleTemplate/{id}")
     public ResponseEntity<List<LessonTemplate>> getByScheduleTemplateId(@PathVariable("id") long id){

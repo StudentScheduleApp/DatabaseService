@@ -20,7 +20,7 @@ public class OutlineController {
 
     @GetMapping("id/{id}")
     public ResponseEntity<Outline> getById(@PathVariable("id") long id){
-        return ResponseEntity.ok(outlineRepository.findById(id).get());
+        return ResponseEntity.ok(outlineRepository.findById(id).orElse(null));
     }
     @GetMapping("specificLesson/{id}")
     public ResponseEntity<List<Outline>> getBySpecificLessonId(@PathVariable("id") long id){

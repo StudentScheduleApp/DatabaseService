@@ -20,7 +20,7 @@ public class SpecificLessonController {
 
     @GetMapping("id/{id}")
     public ResponseEntity<SpecificLesson> getById(@PathVariable("id") long id){
-        return ResponseEntity.ok(specificLessonRepository.findById(id).get());
+        return ResponseEntity.ok(specificLessonRepository.findById(id).orElse(null));
     }
     @GetMapping("group/{id}")
     public ResponseEntity<List<SpecificLesson>> getByGroupId(@PathVariable("id") long id){

@@ -20,7 +20,7 @@ public class GroupController {
 
     @GetMapping("id/{id}")
     public ResponseEntity<Group> getById(@PathVariable("id") long id){
-        return ResponseEntity.ok(groupRepository.findById(id).get());
+        return ResponseEntity.ok(groupRepository.findById(id).orElse(null));
     }
     @PostMapping("save")
     public ResponseEntity<Group> save(@RequestBody Group data){

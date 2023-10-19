@@ -19,7 +19,7 @@ public class UserController {
 
     @GetMapping("id/{id}")
     public ResponseEntity<User> getById(@PathVariable("id") long id){
-        return ResponseEntity.ok(userRepository.findById(id).get());
+        return ResponseEntity.ok(userRepository.findById(id).orElse(null));
     }
     @GetMapping("email/{email}")
     public ResponseEntity<User> getByEmail(@PathVariable("email") String email){

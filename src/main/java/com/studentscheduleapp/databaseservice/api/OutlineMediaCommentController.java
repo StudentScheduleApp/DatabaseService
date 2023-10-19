@@ -19,7 +19,7 @@ public class OutlineMediaCommentController {
 
     @GetMapping("id/{id}")
     public ResponseEntity<OutlineMediaComment> getById(@PathVariable("id") long id){
-        return ResponseEntity.ok(outlineMediaCommentRepository.findById(id).get());
+        return ResponseEntity.ok(outlineMediaCommentRepository.findById(id).orElse(null));
     }
     @GetMapping("outlineMedia/{id}")
     public ResponseEntity<List<OutlineMediaComment>> getByOutlineMediaId(@PathVariable("id") long id){

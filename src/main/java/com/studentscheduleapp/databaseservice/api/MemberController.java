@@ -20,7 +20,7 @@ public class MemberController {
 
     @GetMapping("id/{id}")
     public ResponseEntity<Member> getById(@PathVariable("id") long id){
-        return ResponseEntity.ok(memberRepository.findById(id).get());
+        return ResponseEntity.ok(memberRepository.findById(id).orElse(null));
     }
     @GetMapping("group/{id}")
     public ResponseEntity<List<Member>> getByGroupId(@PathVariable("id") long id){
