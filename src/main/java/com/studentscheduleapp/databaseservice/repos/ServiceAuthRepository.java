@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
 @Repository
-public class ServiceTokenRepository {
+public class ServiceAuthRepository {
 
     @Value("${ip.identityservice}")
     private String identityService;
@@ -17,7 +17,7 @@ public class ServiceTokenRepository {
     @Autowired
     private RestTemplate restTemplate;
 
-    public boolean existsByServiceToken(String serviceToken) throws Exception{
+    public boolean authorize(String serviceToken) throws Exception{
         ResponseEntity<Void> r = restTemplate.postForEntity(identityService + "/api/service/authorize", new AuthorizeServiceRequest(serviceToken), Void.class);
         if(r.getStatusCode().is2xxSuccessful())
             return true;

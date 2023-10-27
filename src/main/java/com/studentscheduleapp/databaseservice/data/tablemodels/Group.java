@@ -23,7 +23,5 @@ public class Group {
     private long avaUrl;
     @Column(name = "name", nullable = false)
     private String name;
-    @Column(name = "drive_email")
-    private String driveEmail;
 
 }
