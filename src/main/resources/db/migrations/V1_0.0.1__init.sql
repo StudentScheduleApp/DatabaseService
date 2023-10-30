@@ -5,7 +5,7 @@
 CREATE TABLE IF NOT EXISTS public.users
 (
     id bigint NOT NULL,
-    ava_url bigint,
+    ava_url character varying(255) COLLATE pg_catalog."default" NOT NULL
     banned boolean NOT NULL,
     email character varying(255) COLLATE pg_catalog."default" NOT NULL,
     first_name character varying(255) COLLATE pg_catalog."default" NOT NULL,
@@ -45,7 +45,7 @@ ALTER TABLE IF EXISTS public.user_roles
 CREATE TABLE IF NOT EXISTS public.groups
 (
     id bigint NOT NULL,
-    ava_url bigint NOT NULL,
+    ava_url character varying(255) COLLATE pg_catalog."default",
     chat_id bigint NOT NULL,
     name character varying(255) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT groups_pkey PRIMARY KEY (id)

@@ -29,7 +29,7 @@ public class User {
     @Column(name = "banned", nullable = false)
     private Boolean banned;
     @Column(name = "ava_url")
-    private long avaUrl;
+    private String avaUrl;
     @ElementCollection
     private List<Role> roles;
 

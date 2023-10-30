@@ -20,7 +20,7 @@ public class Group {
     @Column(name = "chat_id", nullable = false)
     private long chatId;
     @Column(name = "ava_url", nullable = false)
-    private long avaUrl;
+    private String avaUrl;
     @Column(name = "name", nullable = false)
     private String name;
 
