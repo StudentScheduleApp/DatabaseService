@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("api/customLessons")
@@ -22,19 +23,23 @@ public class CustomLessonController {
 
     @GetMapping("id/{id}")
     public ResponseEntity<CustomLesson> getById(@PathVariable("id") long id){
+        Logger.getGlobal().info("get custom lesson successful");
         return ResponseEntity.ok(customLessonRepository.findById(id).orElse(null));
     }
     @GetMapping("group/{id}")
     public ResponseEntity<List<CustomLesson>> getByGroupId(@PathVariable("id") long id){
+        Logger.getGlobal().info("get custom lesson successful");
         return ResponseEntity.ok(customLessonRepository.findByGroupId(id));
     }
     @PostMapping("save")
     public ResponseEntity<CustomLesson> save(@RequestBody CustomLesson data){
+        Logger.getGlobal().info("save custom lesson successful");
         return ResponseEntity.ok(customLessonRepository.save(data));
     }
     @DeleteMapping("delete/{id}")
     public ResponseEntity<List<CustomLesson>> deleteById(@PathVariable("id") long id){
         customLessonRepository.deleteById(id);
+        Logger.getGlobal().info("delete custom lesson successful");
         return ResponseEntity.ok().build();
     }
 }

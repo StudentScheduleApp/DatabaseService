@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("api/outlineMedias")
@@ -19,19 +20,23 @@ public class OutlineMediaController {
 
     @GetMapping("id/{id}")
     public ResponseEntity<OutlineMedia> getById(@PathVariable("id") long id){
+        Logger.getGlobal().info("get outline media successful");
         return ResponseEntity.ok(outlineMediaRepository.findById(id).orElse(null));
     }
     @GetMapping("outline/{id}")
     public ResponseEntity<List<OutlineMedia>> getByOutlineId(@PathVariable("id") long id){
+        Logger.getGlobal().info("get outline media successful");
         return ResponseEntity.ok(outlineMediaRepository.findByOutlineId(id));
     }
     @PostMapping("save")
     public ResponseEntity<OutlineMedia> save(@RequestBody OutlineMedia data){
+        Logger.getGlobal().info("save outline media successful");
         return ResponseEntity.ok(outlineMediaRepository.save(data));
     }
     @DeleteMapping("delete/{id}")
     public ResponseEntity<List<CustomLesson>> deleteById(@PathVariable("id") long id){
         outlineMediaRepository.deleteById(id);
+        Logger.getGlobal().info("delete outline media successful");
         return ResponseEntity.ok().build();
     }
 }
