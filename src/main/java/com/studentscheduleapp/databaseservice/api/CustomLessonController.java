@@ -32,11 +32,15 @@ public class CustomLessonController {
     }
     @PostMapping("${mapping.customLesson.save}")
     public ResponseEntity<CustomLesson> save(@RequestBody CustomLesson data){
+        if(data.getName() == null || data.getName().isEmpty()) {
+            Logger.getGlobal().info("bad request: name is null or empty");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
         Logger.getGlobal().info("save custom lesson successful");
         return ResponseEntity.ok(customLessonRepository.save(data));
     }
     @DeleteMapping("${mapping.customLesson.delete}/{id}")
-    public ResponseEntity<List<CustomLesson>> deleteById(@PathVariable("id") long id){
+    public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
         customLessonRepository.deleteById(id);
         Logger.getGlobal().info("delete custom lesson successful");
         return ResponseEntity.ok().build();

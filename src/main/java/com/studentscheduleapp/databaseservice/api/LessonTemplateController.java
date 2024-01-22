@@ -34,7 +34,7 @@ public class LessonTemplateController {
         return ResponseEntity.ok(lessonTemplateRepository.save(data));
     }
     @DeleteMapping("${mapping.lessonTemplate.delete}/{id}")
-    public ResponseEntity<List<CustomLesson>> deleteById(@PathVariable("id") long id){
+    public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
         lessonTemplateRepository.deleteById(id);
         Logger.getGlobal().info("delete lesson template successful");
         return ResponseEntity.ok().build();

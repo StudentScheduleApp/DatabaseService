@@ -27,7 +27,7 @@ public class User {
     @Column(name = "last_name", nullable = false)
     private String lastName;
     @Column(name = "banned", nullable = false)
-    private Boolean banned;
+    private boolean banned;
     @Column(name = "ava_url")
     private String avaUrl;
     @ElementCollection

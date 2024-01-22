@@ -39,7 +39,7 @@ public class OutlineController {
         return ResponseEntity.ok(outlineRepository.save(data));
     }
     @DeleteMapping("${mapping.outline.delete}/{id}")
-    public ResponseEntity<List<CustomLesson>> deleteById(@PathVariable("id") long id){
+    public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
         outlineRepository.deleteById(id);
         Logger.getGlobal().info("delete outline successful");
         return ResponseEntity.ok().build();

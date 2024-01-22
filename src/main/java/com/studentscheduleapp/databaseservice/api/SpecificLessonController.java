@@ -6,6 +6,7 @@ import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
 import com.studentscheduleapp.databaseservice.data.tablemodels.Member;
 import com.studentscheduleapp.databaseservice.data.tablemodels.SpecificLesson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +35,7 @@ public class SpecificLessonController {
         return ResponseEntity.ok(specificLessonRepository.save(data));
     }
     @DeleteMapping("${mapping.specificLesson.delete}/{id}")
-    public ResponseEntity<List<CustomLesson>> deleteById(@PathVariable("id") long id){
+    public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
         specificLessonRepository.deleteById(id);
         Logger.getGlobal().info("delete specific lesson successful");
         return ResponseEntity.ok().build();

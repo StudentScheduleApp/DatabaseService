@@ -39,7 +39,7 @@ public class MemberController {
         return ResponseEntity.ok(memberRepository.save(data));
     }
     @DeleteMapping("${mapping.member.delete}/{id}")
-    public ResponseEntity<List<CustomLesson>> deleteById(@PathVariable("id") long id){
+    public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
         memberRepository.deleteById(id);
         Logger.getGlobal().info("delete member successful");
         return ResponseEntity.ok().build();

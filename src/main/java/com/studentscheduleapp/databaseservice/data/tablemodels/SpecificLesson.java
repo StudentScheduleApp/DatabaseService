@@ -23,7 +23,7 @@ public class SpecificLesson {
     @Column(name = "time", nullable = false)
     private long time;
     @Column(name = "canceled", nullable = false)
-    private Boolean canceled;
+    private boolean canceled;
     @Column(name = "comment")
     private String comment;
 

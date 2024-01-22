@@ -6,6 +6,7 @@ import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
 import com.studentscheduleapp.databaseservice.data.tablemodels.Group;
 import com.studentscheduleapp.databaseservice.data.tablemodels.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,11 +26,15 @@ public class GroupController {
     }
     @PostMapping("${mapping.group.save}")
     public ResponseEntity<Group> save(@RequestBody Group data){
+        if(data.getName() == null || data.getName().isEmpty()) {
+            Logger.getGlobal().info("bad request: name is null or empty");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
         Logger.getGlobal().info("save group successful");
         return ResponseEntity.ok(groupRepository.save(data));
     }
     @DeleteMapping("${mapping.group.delete}/{id}")
-    public ResponseEntity<List<CustomLesson>> deleteById(@PathVariable("id") long id){
+    public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
         groupRepository.deleteById(id);
         Logger.getGlobal().info("delete group successful");
         return ResponseEntity.ok().build();
