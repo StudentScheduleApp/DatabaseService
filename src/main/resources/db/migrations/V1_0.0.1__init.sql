@@ -5,7 +5,7 @@
 CREATE TABLE IF NOT EXISTS public.users
 (
     id bigint NOT NULL,
-    ava_url character varying(255) COLLATE pg_catalog."default" NOT NULL
+    ava_url character varying(255) COLLATE pg_catalog."default",
     banned boolean NOT NULL,
     email character varying(255) COLLATE pg_catalog."default" NOT NULL,
     first_name character varying(255) COLLATE pg_catalog."default" NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS public.custom_lessons
     id bigint NOT NULL,
     group_id bigint NOT NULL,
     name character varying(255) COLLATE pg_catalog."default" NOT NULL,
-    teacher character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    teacher character varying(255) COLLATE pg_catalog."default",
     CONSTRAINT custom_lessons_pkey PRIMARY KEY (id)
 )
 
@@ -223,17 +223,3 @@ TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS public.specific_lessons
     OWNER to postgres;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -21,7 +21,7 @@ public class CustomLesson {
     private long groupId;
     @Column(name = "name", nullable = false)
     private String name;
-    @Column(name = "teacher", nullable = false)
+    @Column(name = "teacher")
     private String teacher;
 
 
