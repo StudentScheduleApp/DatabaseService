@@ -15,28 +15,27 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
-@RequestMapping("api/customLessons")
 public class CustomLessonController {
 
     @Autowired
     private CustomLessonRepository customLessonRepository;
 
-    @GetMapping("id/{id}")
+    @GetMapping("${mapping.customLesson.getById}/{id}")
     public ResponseEntity<CustomLesson> getById(@PathVariable("id") long id){
         Logger.getGlobal().info("get custom lesson successful");
         return ResponseEntity.ok(customLessonRepository.findById(id).orElse(null));
     }
-    @GetMapping("group/{id}")
+    @GetMapping("${mapping.customLesson.getByGroupId}/{id}")
     public ResponseEntity<List<CustomLesson>> getByGroupId(@PathVariable("id") long id){
         Logger.getGlobal().info("get custom lesson successful");
         return ResponseEntity.ok(customLessonRepository.findByGroupId(id));
     }
-    @PostMapping("save")
+    @PostMapping("${mapping.customLesson.save}")
     public ResponseEntity<CustomLesson> save(@RequestBody CustomLesson data){
         Logger.getGlobal().info("save custom lesson successful");
         return ResponseEntity.ok(customLessonRepository.save(data));
     }
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("${mapping.customLesson.delete}/{id}")
     public ResponseEntity<List<CustomLesson>> deleteById(@PathVariable("id") long id){
         customLessonRepository.deleteById(id);
         Logger.getGlobal().info("delete custom lesson successful");

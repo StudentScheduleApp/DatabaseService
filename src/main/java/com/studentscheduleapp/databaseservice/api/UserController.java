@@ -12,28 +12,27 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
-@RequestMapping("api/users")
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("id/{id}")
+    @GetMapping("${mapping.user.getById}/{id}")
     public ResponseEntity<User> getById(@PathVariable("id") long id){
         Logger.getGlobal().info("get user successful");
         return ResponseEntity.ok(userRepository.findById(id).orElse(null));
     }
-    @GetMapping("email/{email}")
+    @GetMapping("${mapping.user.getByEmail}/{id}")
     public ResponseEntity<User> getByEmail(@PathVariable("email") String email){
         Logger.getGlobal().info("get user successful");
         return ResponseEntity.ok(userRepository.findByEmail(email).orElse(null));
     }
-    @PostMapping("save")
+    @PostMapping("${mapping.user.save}")
     public ResponseEntity<User> save(@RequestBody User data){
         Logger.getGlobal().info("save user successful");
         return ResponseEntity.ok(userRepository.save(data));
     }
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("${mapping.user.delete}/{id}")
     public ResponseEntity<List<CustomLesson>> deleteById(@PathVariable("id") long id){
         userRepository.deleteById(id);
         Logger.getGlobal().info("delete user successful");
