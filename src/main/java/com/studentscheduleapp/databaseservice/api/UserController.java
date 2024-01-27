@@ -23,7 +23,7 @@ public class UserController {
         Logger.getGlobal().info("get user successful");
         return ResponseEntity.ok(userRepository.findById(id).orElse(null));
     }
-    @GetMapping("${mapping.user.getByEmail}/{id}")
+    @GetMapping("${mapping.user.getByEmail}/{email}")
     public ResponseEntity<User> getByEmail(@PathVariable("email") String email){
         Logger.getGlobal().info("get user successful");
         return ResponseEntity.ok(userRepository.findByEmail(email).orElse(null));
