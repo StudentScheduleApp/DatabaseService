@@ -20,7 +20,7 @@ public class ScheduleTemplateController {
 
     @Autowired
     private ScheduleTemplateRepository scheduleTemplateRepository;
-    private static Logger log = LogManager.getLogger(ScheduleTemplateController.class);
+    private static final Logger log = LogManager.getLogger(ScheduleTemplateController.class);
 
     @GetMapping("${mapping.scheduleTemplate.getById}/{id}")
     public ResponseEntity<ScheduleTemplate> getById(@PathVariable("id") long id){

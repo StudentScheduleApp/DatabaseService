@@ -19,7 +19,7 @@ public class LessonTemplateController {
 
     @Autowired
     private LessonTemplateRepository lessonTemplateRepository;
-    private static Logger log = LogManager.getLogger(LessonTemplateController.class);
+    private static final Logger log = LogManager.getLogger(LessonTemplateController.class);
 
     @GetMapping("${mapping.lessonTemplate.getById}/{id}")
     public ResponseEntity<LessonTemplate> getById(@PathVariable("id") long id){

@@ -21,7 +21,7 @@ public class CustomLessonController {
 
     @Autowired
     private CustomLessonRepository customLessonRepository;
-    private static Logger log = LogManager.getLogger(CustomLessonController.class);
+    private static final Logger log = LogManager.getLogger(CustomLessonController.class);
 
     @GetMapping("${mapping.customLesson.getById}/{id}")
     public ResponseEntity<CustomLesson> getById(@PathVariable("id") long id){

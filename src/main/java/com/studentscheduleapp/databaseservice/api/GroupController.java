@@ -19,7 +19,7 @@ public class GroupController {
 
     @Autowired
     private GroupRepository groupRepository;
-    private static Logger log = LogManager.getLogger(GroupController.class);
+    private static final Logger log = LogManager.getLogger(GroupController.class);
 
     @GetMapping("${mapping.group.getById}/{id}")
     public ResponseEntity<Group> getById(@PathVariable("id") long id){

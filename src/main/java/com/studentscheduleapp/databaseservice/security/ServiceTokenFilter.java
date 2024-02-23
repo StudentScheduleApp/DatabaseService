@@ -32,7 +32,7 @@ public class ServiceTokenFilter extends GenericFilterBean {
     private GlobalProperties globalProperties;
     @Autowired
     private AuthorizeServiceService authorizeServiceService;
-    private static Logger log = LogManager.getLogger(ServiceTokenFilter.class);
+    private static final Logger logger = LogManager.getLogger(ServiceTokenFilter.class);
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain fc) throws IOException, ServletException {
@@ -45,12 +45,12 @@ public class ServiceTokenFilter extends GenericFilterBean {
                 SecurityContextHolder.getContext().setAuthentication(appInfoToken);
             }
             else
-                log.warn("authorize service failed: invalid token " + token);
+                logger.warn("authorize service failed: invalid token " + token);
         } catch (Exception e) {
             e.getStackTrace();
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
-            log.error("authorize service failed: " + errors);
+            logger.error("authorize service failed: " + errors);
         }
         fc.doFilter(request, response);
     }

@@ -19,7 +19,7 @@ public class OutlineMediaController {
 
     @Autowired
     private OutlineMediaRepository outlineMediaRepository;
-    private static Logger log = LogManager.getLogger(OutlineMediaController.class);
+    private static final Logger log = LogManager.getLogger(OutlineMediaController.class);
 
     @GetMapping("${mapping.outlineMedia.getById}/{id}")
     public ResponseEntity<OutlineMedia> getById(@PathVariable("id") long id){

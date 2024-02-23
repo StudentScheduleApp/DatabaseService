@@ -19,7 +19,7 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
-    private static Logger log = LogManager.getLogger(UserController.class);
+    private static final Logger log = LogManager.getLogger(UserController.class);
 
     @GetMapping("${mapping.user.getById}/{id}")
     public ResponseEntity<User> getById(@PathVariable("id") long id){

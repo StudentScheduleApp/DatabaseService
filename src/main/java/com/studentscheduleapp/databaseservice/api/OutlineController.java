@@ -19,7 +19,7 @@ public class OutlineController {
 
     @Autowired
     private OutlineRepository outlineRepository;
-    private static Logger log = LogManager.getLogger(OutlineController.class);
+    private static final Logger log = LogManager.getLogger(OutlineController.class);
 
     @GetMapping("${mapping.outline.getById}/{id}")
     public ResponseEntity<Outline> getById(@PathVariable("id") long id){

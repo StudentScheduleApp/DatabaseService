@@ -19,7 +19,7 @@ public class OutlineMediaCommentController {
 
     @Autowired
     private OutlineMediaCommentRepository outlineMediaCommentRepository;
-    private static Logger log = LogManager.getLogger(OutlineMediaCommentController.class);
+    private static final Logger log = LogManager.getLogger(OutlineMediaCommentController.class);
 
     @GetMapping("${mapping.outlineMediaComment.getById}/{id}")
     public ResponseEntity<OutlineMediaComment> getById(@PathVariable("id") long id){

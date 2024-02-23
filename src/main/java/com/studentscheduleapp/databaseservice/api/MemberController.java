@@ -19,7 +19,7 @@ public class MemberController {
 
     @Autowired
     private MemberRepository memberRepository;
-    private static Logger log = LogManager.getLogger(MemberController.class);
+    private static final Logger log = LogManager.getLogger(MemberController.class);
 
     @GetMapping("${mapping.member.getById}/{id}")
     public ResponseEntity<Member> getById(@PathVariable("id") long id){

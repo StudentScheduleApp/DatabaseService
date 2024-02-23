@@ -20,7 +20,7 @@ public class SpecificLessonController {
 
     @Autowired
     private SpecificLessonRepository specificLessonRepository;
-    private static Logger log = LogManager.getLogger(SpecificLessonController.class);
+    private static final Logger log = LogManager.getLogger(SpecificLessonController.class);
 
     @GetMapping("${mapping.specificLesson.getById}/{id}")
     public ResponseEntity<SpecificLesson> getById(@PathVariable("id") long id){
