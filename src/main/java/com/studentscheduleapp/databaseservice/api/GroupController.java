@@ -5,42 +5,43 @@ import com.studentscheduleapp.databaseservice.data.repositories.UserRepository;
 import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
 import com.studentscheduleapp.databaseservice.data.tablemodels.Group;
 import com.studentscheduleapp.databaseservice.data.tablemodels.User;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.logging.Logger;
 
 @RestController
 public class GroupController {
 
     @Autowired
     private GroupRepository groupRepository;
+    private static Logger log = LogManager.getLogger(GroupController.class);
 
     @GetMapping("${mapping.group.getById}/{id}")
     public ResponseEntity<Group> getById(@PathVariable("id") long id){
-        Logger.getGlobal().info("get group with id: " + id);
+        log.info("get group with id: " + id);
         return ResponseEntity.ok(groupRepository.findById(id).orElse(null));
     }
     @PostMapping("${mapping.group.save}")
     public ResponseEntity<Group> save(@RequestBody Group data){
         if(data.getName() == null || data.getName().isEmpty()) {
-            Logger.getGlobal().info("bad request: group name is null or empty");
+            log.info("bad request: group name is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        Logger.getGlobal().info("save group with id: " + data.getId());
+        log.info("save group with id: " + data.getId());
         return ResponseEntity.ok(groupRepository.save(data));
     }
     @DeleteMapping("${mapping.group.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
         try {
             groupRepository.deleteById(id);
-            Logger.getGlobal().info("delete group with id: " + id);
+            log.info("delete group with id: " + id);
         } catch (EmptyResultDataAccessException e){
-            Logger.getGlobal().info("delete group with id: " + id + " failed: entity not exists");
+            log.info("delete group with id: " + id + " failed: entity not exists");
         }
         return ResponseEntity.ok().build();
     }
