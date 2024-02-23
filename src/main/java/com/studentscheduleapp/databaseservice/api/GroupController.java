@@ -41,7 +41,7 @@ public class GroupController {
             groupRepository.deleteById(id);
             log.info("delete group with id: " + id);
         } catch (EmptyResultDataAccessException e){
-            log.info("delete group with id: " + id + " failed: entity not exists");
+            log.warn("delete group with id: " + id + " failed: entity not exists");
         }
         return ResponseEntity.ok().build();
     }

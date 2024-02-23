@@ -42,7 +42,7 @@ public class LessonTemplateController {
             lessonTemplateRepository.deleteById(id);
             log.info("delete lessonTemplate with id: " + id);
         } catch (EmptyResultDataAccessException e){
-            log.info("delete lessonTemplate with id: " + id + " failed: entity not exists");
+            log.warn("delete lessonTemplate with id: " + id + " failed: entity not exists");
         }
         return ResponseEntity.ok().build();
     }

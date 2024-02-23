@@ -58,7 +58,7 @@ public class UserController {
             userRepository.deleteById(id);
             log.info("delete user with id: " + id);
         } catch (EmptyResultDataAccessException e){
-            log.info("delete user with id: " + id + " failed: entity not exists");
+            log.warn("delete user with id: " + id + " failed: entity not exists");
         }
         return ResponseEntity.ok().build();
     }

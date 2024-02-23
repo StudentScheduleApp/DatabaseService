@@ -46,7 +46,7 @@ public class OutlineMediaCommentController {
             outlineMediaCommentRepository.deleteById(id);
             log.info("delete outlineMediaComment with id: " + id);
         } catch (EmptyResultDataAccessException e){
-            log.info("delete outlineMediaComment with id: " + id + " failed: entity not exists");
+            log.warn("delete outlineMediaComment with id: " + id + " failed: entity not exists");
         }
         return ResponseEntity.ok().build();
     }

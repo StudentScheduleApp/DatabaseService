@@ -47,7 +47,7 @@ public class OutlineController {
             outlineRepository.deleteById(id);
             log.info("delete outline with id: " + id);
         } catch (EmptyResultDataAccessException e){
-            log.info("delete outline with id: " + id + " failed: entity not exists");
+            log.warn("delete outline with id: " + id + " failed: entity not exists");
         }
         return ResponseEntity.ok().build();
     }

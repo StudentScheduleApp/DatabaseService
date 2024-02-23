@@ -47,7 +47,7 @@ public class MemberController {
             memberRepository.deleteById(id);
             log.info("delete member with id: " + id);
         } catch (EmptyResultDataAccessException e){
-            log.info("delete member with id: " + id + " failed: entity not exists");
+            log.warn("delete member with id: " + id + " failed: entity not exists");
         }
         return ResponseEntity.ok().build();
     }

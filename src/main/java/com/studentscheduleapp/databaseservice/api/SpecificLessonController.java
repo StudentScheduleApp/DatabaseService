@@ -43,7 +43,7 @@ public class SpecificLessonController {
             specificLessonRepository.deleteById(id);
             log.info("delete specificLesson with id: " + id);
         } catch (EmptyResultDataAccessException e){
-            log.info("delete specificLesson with id: " + id + " failed: entity not exists");
+            log.warn("delete specificLesson with id: " + id + " failed: entity not exists");
         }
         return ResponseEntity.ok().build();
     }

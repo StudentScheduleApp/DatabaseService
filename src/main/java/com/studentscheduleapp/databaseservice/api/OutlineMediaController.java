@@ -46,7 +46,7 @@ public class OutlineMediaController {
             outlineMediaRepository.deleteById(id);
             log.info("delete outlineMedia with id: " + id);
         } catch (EmptyResultDataAccessException e){
-            log.info("delete outlineMedia with id: " + id + " failed: entity not exists");
+            log.warn("delete outlineMedia with id: " + id + " failed: entity not exists");
         }
         return ResponseEntity.ok().build();
     }

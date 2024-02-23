@@ -47,7 +47,7 @@ public class ScheduleTemplateController {
             scheduleTemplateRepository.deleteById(id);
             log.info("delete scheduleTemplate with id: " + id);
         } catch (EmptyResultDataAccessException e){
-            log.info("delete scheduleTemplate with id: " + id + " failed: entity not exists");
+            log.warn("delete scheduleTemplate with id: " + id + " failed: entity not exists");
         }
         return ResponseEntity.ok().build();
     }
