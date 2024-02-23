@@ -6,6 +6,7 @@ import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
 import com.studentscheduleapp.databaseservice.data.tablemodels.Group;
 import com.studentscheduleapp.databaseservice.data.tablemodels.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,8 +36,12 @@ public class GroupController {
     }
     @DeleteMapping("${mapping.group.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
-        groupRepository.deleteById(id);
-        Logger.getGlobal().info("delete group successful");
+        try {
+            groupRepository.deleteById(id);
+            Logger.getGlobal().info("delete group with id: " + id);
+        } catch (EmptyResultDataAccessException e){
+            Logger.getGlobal().info("delete group with id: " + id + " failed: entity not exists");
+        }
         return ResponseEntity.ok().build();
     }
 }

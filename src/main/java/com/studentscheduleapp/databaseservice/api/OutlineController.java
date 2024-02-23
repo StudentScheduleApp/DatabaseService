@@ -6,6 +6,7 @@ import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
 import com.studentscheduleapp.databaseservice.data.tablemodels.Member;
 import com.studentscheduleapp.databaseservice.data.tablemodels.Outline;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,8 +41,12 @@ public class OutlineController {
     }
     @DeleteMapping("${mapping.outline.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
-        outlineRepository.deleteById(id);
-        Logger.getGlobal().info("delete outline with id: " + id);
+        try {
+            outlineRepository.deleteById(id);
+            Logger.getGlobal().info("delete outline with id: " + id);
+        } catch (EmptyResultDataAccessException e){
+            Logger.getGlobal().info("delete outline with id: " + id + " failed: entity not exists");
+        }
         return ResponseEntity.ok().build();
     }
 }

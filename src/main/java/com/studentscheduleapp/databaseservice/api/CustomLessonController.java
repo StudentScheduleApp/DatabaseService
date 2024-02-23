@@ -3,6 +3,7 @@ package com.studentscheduleapp.databaseservice.api;
 import com.studentscheduleapp.databaseservice.data.repositories.CustomLessonRepository;
 import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -41,8 +42,12 @@ public class CustomLessonController {
     }
     @DeleteMapping("${mapping.customLesson.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
-        Logger.getGlobal().info("delete customLesson with id: " + id);
-        customLessonRepository.deleteById(id);
+        try {
+            customLessonRepository.deleteById(id);
+            Logger.getGlobal().info("delete customLesson with id: " + id);
+        } catch (EmptyResultDataAccessException e){
+            Logger.getGlobal().info("delete customLesson with id: " + id + " failed: entity not exists");
+        }
         return ResponseEntity.ok().build();
     }
 }

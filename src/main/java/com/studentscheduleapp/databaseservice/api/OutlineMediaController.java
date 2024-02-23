@@ -5,6 +5,7 @@ import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
 import com.studentscheduleapp.databaseservice.data.tablemodels.Outline;
 import com.studentscheduleapp.databaseservice.data.tablemodels.OutlineMedia;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,8 +40,12 @@ public class OutlineMediaController {
     }
     @DeleteMapping("${mapping.outlineMedia.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
-        outlineMediaRepository.deleteById(id);
-        Logger.getGlobal().info("delete outlineMedia with id: " + id);
+        try {
+            outlineMediaRepository.deleteById(id);
+            Logger.getGlobal().info("delete outlineMedia with id: " + id);
+        } catch (EmptyResultDataAccessException e){
+            Logger.getGlobal().info("delete outlineMedia with id: " + id + " failed: entity not exists");
+        }
         return ResponseEntity.ok().build();
     }
 }

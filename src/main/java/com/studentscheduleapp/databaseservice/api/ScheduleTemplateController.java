@@ -6,6 +6,7 @@ import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
 import com.studentscheduleapp.databaseservice.data.tablemodels.Group;
 import com.studentscheduleapp.databaseservice.data.tablemodels.ScheduleTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,13 +36,17 @@ public class ScheduleTemplateController {
             Logger.getGlobal().info("bad request: scheduleTemplate name is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        Logger.getGlobal().info("save schedule template with id: " + data.getId());
+        Logger.getGlobal().info("save scheduleTemplate with id: " + data.getId());
         return ResponseEntity.ok(scheduleTemplateRepository.save(data));
     }
     @DeleteMapping("${mapping.scheduleTemplate.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
-        scheduleTemplateRepository.deleteById(id);
-        Logger.getGlobal().info("delete scheduleTemplate with id: " + id);
+        try {
+            scheduleTemplateRepository.deleteById(id);
+            Logger.getGlobal().info("delete scheduleTemplate with id: " + id);
+        } catch (EmptyResultDataAccessException e){
+            Logger.getGlobal().info("delete scheduleTemplate with id: " + id + " failed: entity not exists");
+        }
         return ResponseEntity.ok().build();
     }
 }

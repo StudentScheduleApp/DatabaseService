@@ -5,6 +5,7 @@ import com.studentscheduleapp.databaseservice.data.repositories.UserRepository;
 import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
 import com.studentscheduleapp.databaseservice.data.tablemodels.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,8 +52,12 @@ public class UserController {
     }
     @DeleteMapping("${mapping.user.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
-        userRepository.deleteById(id);
-        Logger.getGlobal().info("delete user with id: " + id);
+        try {
+            userRepository.deleteById(id);
+            Logger.getGlobal().info("delete user with id: " + id);
+        } catch (EmptyResultDataAccessException e){
+            Logger.getGlobal().info("delete user with id: " + id + " failed: entity not exists");
+        }
         return ResponseEntity.ok().build();
     }
 }

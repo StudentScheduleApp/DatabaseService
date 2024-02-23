@@ -6,6 +6,7 @@ import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
 import com.studentscheduleapp.databaseservice.data.tablemodels.Group;
 import com.studentscheduleapp.databaseservice.data.tablemodels.Member;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,8 +41,12 @@ public class MemberController {
     }
     @DeleteMapping("${mapping.member.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
-        memberRepository.deleteById(id);
-        Logger.getGlobal().info("delete member with id: " + id);
+        try {
+            memberRepository.deleteById(id);
+            Logger.getGlobal().info("delete member with id: " + id);
+        } catch (EmptyResultDataAccessException e){
+            Logger.getGlobal().info("delete member with id: " + id + " failed: entity not exists");
+        }
         return ResponseEntity.ok().build();
     }
 }
