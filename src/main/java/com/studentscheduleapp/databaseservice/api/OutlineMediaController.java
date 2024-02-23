@@ -34,7 +34,7 @@ public class OutlineMediaController {
     @PostMapping("${mapping.outlineMedia.save}")
     public ResponseEntity<OutlineMedia> save(@RequestBody OutlineMedia data){
         if(data.getImageUrl() == null || data.getImageUrl().isEmpty()) {
-            log.info("bad request: outlineMedia imageUrl is null or empty");
+            log.warn("bad request: outlineMedia imageUrl is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         OutlineMedia d = outlineMediaRepository.save(data);

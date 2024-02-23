@@ -36,7 +36,7 @@ public class CustomLessonController {
     @PostMapping("${mapping.customLesson.save}")
     public ResponseEntity<CustomLesson> save(@RequestBody CustomLesson data){
         if(data.getName() == null || data.getName().isEmpty()) {
-            log.info("bad request: customLesson name is null or empty");
+            log.warn("bad request: customLesson name is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         CustomLesson d = customLessonRepository.save(data);

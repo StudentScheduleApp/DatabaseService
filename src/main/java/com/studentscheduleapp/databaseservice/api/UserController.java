@@ -34,19 +34,19 @@ public class UserController {
     @PostMapping("${mapping.user.save}")
     public ResponseEntity<User> save(@RequestBody User data){
         if(data.getEmail() == null || data.getEmail().isEmpty()) {
-            log.info("bad request: user email is null or empty");
+            log.warn("bad request: user email is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         if(data.getPassword() == null || data.getPassword().isEmpty()) {
-            log.info("bad request: user password is null or empty");
+            log.warn("bad request: user password is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         if(data.getFirstName() == null || data.getFirstName().isEmpty()) {
-            log.info("bad request: user firstName is null or empty");
+            log.warn("bad request: user firstName is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         if(data.getLastName() == null || data.getLastName().isEmpty()) {
-            log.info("bad request: user lastName is null or empty");
+            log.warn("bad request: user lastName is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         User d = userRepository.save(data);

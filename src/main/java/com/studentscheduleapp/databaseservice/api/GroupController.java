@@ -29,7 +29,7 @@ public class GroupController {
     @PostMapping("${mapping.group.save}")
     public ResponseEntity<Group> save(@RequestBody Group data){
         if(data.getName() == null || data.getName().isEmpty()) {
-            log.info("bad request: group name is null or empty");
+            log.warn("bad request: group name is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         Group d = groupRepository.save(data);

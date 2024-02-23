@@ -35,7 +35,7 @@ public class ScheduleTemplateController {
     @PostMapping("${mapping.scheduleTemplate.save}")
     public ResponseEntity<ScheduleTemplate> save(@RequestBody ScheduleTemplate data){
         if(data.getName() == null || data.getName().isEmpty()) {
-            log.info("bad request: scheduleTemplate name is null or empty");
+            log.warn("bad request: scheduleTemplate name is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         ScheduleTemplate d = scheduleTemplateRepository.save(data);

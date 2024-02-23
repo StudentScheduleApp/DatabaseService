@@ -34,7 +34,7 @@ public class OutlineMediaCommentController {
     @PostMapping("${mapping.outlineMediaComment.save}")
     public ResponseEntity<OutlineMediaComment> save(@RequestBody OutlineMediaComment data){
         if(data.getText() == null || data.getText().isEmpty()) {
-            log.info("bad request: outlineMediaComment text is null or empty");
+            log.warn("bad request: outlineMediaComment text is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         OutlineMediaComment d = outlineMediaCommentRepository.save(data);
