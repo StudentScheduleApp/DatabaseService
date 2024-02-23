@@ -37,8 +37,9 @@ public class OutlineMediaCommentController {
             log.info("bad request: outlineMediaComment text is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        log.info("save outlineMediaComment with id: " + data.getId());
-        return ResponseEntity.ok(outlineMediaCommentRepository.save(data));
+        OutlineMediaComment d = outlineMediaCommentRepository.save(data);
+        log.info("save outlineMediaComment with id: " + d.getId());
+        return ResponseEntity.ok(d);
     }
     @DeleteMapping("${mapping.outlineMediaComment.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){

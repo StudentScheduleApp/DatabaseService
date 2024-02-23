@@ -39,8 +39,9 @@ public class CustomLessonController {
             log.info("bad request: customLesson name is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        log.info("save customLesson with id: " + data.getId());
-        return ResponseEntity.ok(customLessonRepository.save(data));
+        CustomLesson d = customLessonRepository.save(data);
+        log.info("save customLesson with id: " + d.getId());
+        return ResponseEntity.ok(d);
     }
     @DeleteMapping("${mapping.customLesson.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){

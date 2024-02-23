@@ -34,8 +34,9 @@ public class SpecificLessonController {
     }
     @PostMapping("${mapping.specificLesson.save}")
     public ResponseEntity<SpecificLesson> save(@RequestBody SpecificLesson data){
-        log.info("save specificLesson with id: " + data.getId());
-        return ResponseEntity.ok(specificLessonRepository.save(data));
+        SpecificLesson d = specificLessonRepository.save(data);
+        log.info("save specificLesson with id: " + d.getId());
+        return ResponseEntity.ok(d);
     }
     @DeleteMapping("${mapping.specificLesson.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){

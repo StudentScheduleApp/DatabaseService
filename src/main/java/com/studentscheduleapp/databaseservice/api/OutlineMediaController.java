@@ -37,8 +37,9 @@ public class OutlineMediaController {
             log.info("bad request: outlineMedia imageUrl is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        log.info("save outlineMedia with id: " + data.getId());
-        return ResponseEntity.ok(outlineMediaRepository.save(data));
+        OutlineMedia d = outlineMediaRepository.save(data);
+        log.info("save outlineMedia with id: " + d.getId());
+        return ResponseEntity.ok(d);
     }
     @DeleteMapping("${mapping.outlineMedia.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){

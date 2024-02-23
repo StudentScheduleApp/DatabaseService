@@ -33,8 +33,9 @@ public class LessonTemplateController {
     }
     @PostMapping("${mapping.lessonTemplate.save}")
     public ResponseEntity<LessonTemplate> save(@RequestBody LessonTemplate data){
-        log.info("save lessonTemplate with id: " + data.getId());
-        return ResponseEntity.ok(lessonTemplateRepository.save(data));
+        LessonTemplate d = lessonTemplateRepository.save(data);
+        log.info("save lessonTemplate with id: " + d.getId());
+        return ResponseEntity.ok(d);
     }
     @DeleteMapping("${mapping.lessonTemplate.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){

@@ -38,8 +38,9 @@ public class OutlineController {
     }
     @PostMapping("${mapping.outline.save}")
     public ResponseEntity<Outline> save(@RequestBody Outline data){
-        log.info("save outline with id: " + data.getId());
-        return ResponseEntity.ok(outlineRepository.save(data));
+        Outline d = outlineRepository.save(data);
+        log.info("save outline with id: " + d.getId());
+        return ResponseEntity.ok(d);
     }
     @DeleteMapping("${mapping.outline.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){

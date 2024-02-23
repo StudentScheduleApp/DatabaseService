@@ -38,8 +38,9 @@ public class MemberController {
     }
     @PostMapping("${mapping.member.save}")
     public ResponseEntity<Member> save(@RequestBody Member data){
-        log.info("save member with id: " + data.getId());
-        return ResponseEntity.ok(memberRepository.save(data));
+        Member d = memberRepository.save(data);
+        log.info("save member with id: " + d.getId());
+        return ResponseEntity.ok(d);
     }
     @DeleteMapping("${mapping.member.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
