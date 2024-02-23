@@ -20,23 +20,23 @@ public class LessonTemplateController {
 
     @GetMapping("${mapping.lessonTemplate.getById}/{id}")
     public ResponseEntity<LessonTemplate> getById(@PathVariable("id") long id){
-        Logger.getGlobal().info("get lesson template successful");
+        Logger.getGlobal().info("get lessonTemplate with id: " + id);
         return ResponseEntity.ok(lessonTemplateRepository.findById(id).orElse(null));
     }
     @GetMapping("${mapping.lessonTemplate.getByScheduleTemplateId}/{id}")
     public ResponseEntity<List<LessonTemplate>> getByScheduleTemplateId(@PathVariable("id") long id){
-        Logger.getGlobal().info("get lesson template successful");
+        Logger.getGlobal().info("get lessonTemplate with scheduleTemplateId: " + id);
         return ResponseEntity.ok(lessonTemplateRepository.findByScheduleTemplateId(id));
     }
     @PostMapping("${mapping.lessonTemplate.save}")
     public ResponseEntity<LessonTemplate> save(@RequestBody LessonTemplate data){
-        Logger.getGlobal().info("save lesson template successful");
+        Logger.getGlobal().info("save lessonTemplate with id: " + data.getId());
         return ResponseEntity.ok(lessonTemplateRepository.save(data));
     }
     @DeleteMapping("${mapping.lessonTemplate.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
         lessonTemplateRepository.deleteById(id);
-        Logger.getGlobal().info("delete lesson template successful");
+        Logger.getGlobal().info("delete lessonTemplate with id: " + id);
         return ResponseEntity.ok().build();
     }
 }

@@ -20,27 +20,27 @@ public class OutlineMediaController {
 
     @GetMapping("${mapping.outlineMedia.getById}/{id}")
     public ResponseEntity<OutlineMedia> getById(@PathVariable("id") long id){
-        Logger.getGlobal().info("get outline media successful");
+        Logger.getGlobal().info("get outlineMedia with id: " + id);
         return ResponseEntity.ok(outlineMediaRepository.findById(id).orElse(null));
     }
     @GetMapping("${mapping.outlineMedia.getByOutlineId}/{id}")
     public ResponseEntity<List<OutlineMedia>> getByOutlineId(@PathVariable("id") long id){
-        Logger.getGlobal().info("get outline media successful");
+        Logger.getGlobal().info("get outlineMedia with outlineId: " + id);
         return ResponseEntity.ok(outlineMediaRepository.findByOutlineId(id));
     }
     @PostMapping("${mapping.outlineMedia.save}")
     public ResponseEntity<OutlineMedia> save(@RequestBody OutlineMedia data){
         if(data.getImageUrl() == null || data.getImageUrl().isEmpty()) {
-            Logger.getGlobal().info("bad request: imageUrl is null or empty");
+            Logger.getGlobal().info("bad request: outlineMedia imageUrl is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        Logger.getGlobal().info("save outline media successful");
+        Logger.getGlobal().info("save outlineMedia with id: " + data.getId());
         return ResponseEntity.ok(outlineMediaRepository.save(data));
     }
     @DeleteMapping("${mapping.outlineMedia.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
         outlineMediaRepository.deleteById(id);
-        Logger.getGlobal().info("delete outline media successful");
+        Logger.getGlobal().info("delete outlineMedia with id: " + id);
         return ResponseEntity.ok().build();
     }
 }

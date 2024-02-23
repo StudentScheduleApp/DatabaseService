@@ -21,16 +21,16 @@ public class GroupController {
 
     @GetMapping("${mapping.group.getById}/{id}")
     public ResponseEntity<Group> getById(@PathVariable("id") long id){
-        Logger.getGlobal().info("get group successful");
+        Logger.getGlobal().info("get group with id: " + id);
         return ResponseEntity.ok(groupRepository.findById(id).orElse(null));
     }
     @PostMapping("${mapping.group.save}")
     public ResponseEntity<Group> save(@RequestBody Group data){
         if(data.getName() == null || data.getName().isEmpty()) {
-            Logger.getGlobal().info("bad request: name is null or empty");
+            Logger.getGlobal().info("bad request: group name is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        Logger.getGlobal().info("save group successful");
+        Logger.getGlobal().info("save group with id: " + data.getId());
         return ResponseEntity.ok(groupRepository.save(data));
     }
     @DeleteMapping("${mapping.group.delete}/{id}")

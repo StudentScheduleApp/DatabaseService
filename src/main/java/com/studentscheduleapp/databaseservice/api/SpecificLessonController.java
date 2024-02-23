@@ -21,23 +21,23 @@ public class SpecificLessonController {
 
     @GetMapping("${mapping.specificLesson.getById}/{id}")
     public ResponseEntity<SpecificLesson> getById(@PathVariable("id") long id){
-        Logger.getGlobal().info("get specific lesson successful");
+        Logger.getGlobal().info("get specificLesson with id: " + id);
         return ResponseEntity.ok(specificLessonRepository.findById(id).orElse(null));
     }
     @GetMapping("${mapping.specificLesson.getByGroupId}/{id}")
     public ResponseEntity<List<SpecificLesson>> getByGroupId(@PathVariable("id") long id){
-        Logger.getGlobal().info("get specific lesson successful");
+        Logger.getGlobal().info("get specificLesson with groupId: " + id);
         return ResponseEntity.ok(specificLessonRepository.findByGroupId(id));
     }
     @PostMapping("${mapping.specificLesson.save}")
     public ResponseEntity<SpecificLesson> save(@RequestBody SpecificLesson data){
-        Logger.getGlobal().info("save specific lesson successful");
+        Logger.getGlobal().info("save specificLesson with id: " + data.getId());
         return ResponseEntity.ok(specificLessonRepository.save(data));
     }
     @DeleteMapping("${mapping.specificLesson.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
         specificLessonRepository.deleteById(id);
-        Logger.getGlobal().info("delete specific lesson successful");
+        Logger.getGlobal().info("delete specificLesson with id: " + id);
         return ResponseEntity.ok().build();
     }
 }

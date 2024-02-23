@@ -20,39 +20,39 @@ public class UserController {
 
     @GetMapping("${mapping.user.getById}/{id}")
     public ResponseEntity<User> getById(@PathVariable("id") long id){
-        Logger.getGlobal().info("get user successful");
+        Logger.getGlobal().info("get user with id: " + id);
         return ResponseEntity.ok(userRepository.findById(id).orElse(null));
     }
     @GetMapping("${mapping.user.getByEmail}/{email}")
     public ResponseEntity<User> getByEmail(@PathVariable("email") String email){
-        Logger.getGlobal().info("get user successful");
+        Logger.getGlobal().info("get user with email: " + email);
         return ResponseEntity.ok(userRepository.findByEmail(email).orElse(null));
     }
     @PostMapping("${mapping.user.save}")
     public ResponseEntity<User> save(@RequestBody User data){
         if(data.getEmail() == null || data.getEmail().isEmpty()) {
-            Logger.getGlobal().info("bad request: email is null or empty");
+            Logger.getGlobal().info("bad request: user email is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         if(data.getPassword() == null || data.getPassword().isEmpty()) {
-            Logger.getGlobal().info("bad request: password is null or empty");
+            Logger.getGlobal().info("bad request: user password is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         if(data.getFirstName() == null || data.getFirstName().isEmpty()) {
-            Logger.getGlobal().info("bad request: firstName is null or empty");
+            Logger.getGlobal().info("bad request: user firstName is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         if(data.getLastName() == null || data.getLastName().isEmpty()) {
-            Logger.getGlobal().info("bad request: lastName is null or empty");
+            Logger.getGlobal().info("bad request: user lastName is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        Logger.getGlobal().info("save user successful");
+        Logger.getGlobal().info("save user with id: " + data.getId());
         return ResponseEntity.ok(userRepository.save(data));
     }
     @DeleteMapping("${mapping.user.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
         userRepository.deleteById(id);
-        Logger.getGlobal().info("delete user successful");
+        Logger.getGlobal().info("delete user with id: " + id);
         return ResponseEntity.ok().build();
     }
 }

@@ -20,27 +20,27 @@ public class OutlineMediaCommentController {
 
     @GetMapping("${mapping.outlineMediaComment.getById}/{id}")
     public ResponseEntity<OutlineMediaComment> getById(@PathVariable("id") long id){
-        Logger.getGlobal().info("get outline media comment successful");
+        Logger.getGlobal().info("get outlineMediaComment with id: " + id);
         return ResponseEntity.ok(outlineMediaCommentRepository.findById(id).orElse(null));
     }
     @GetMapping("${mapping.outlineMediaComment.getByOutlineMediaId}/{id}")
     public ResponseEntity<List<OutlineMediaComment>> getByOutlineMediaId(@PathVariable("id") long id){
-        Logger.getGlobal().info("get outline media comment successful");
+        Logger.getGlobal().info("get outlineMediaComment with outlineMediaId: " + id);
         return ResponseEntity.ok(outlineMediaCommentRepository.findByMediaId(id));
     }
     @PostMapping("${mapping.outlineMediaComment.save}")
     public ResponseEntity<OutlineMediaComment> save(@RequestBody OutlineMediaComment data){
         if(data.getText() == null || data.getText().isEmpty()) {
-            Logger.getGlobal().info("bad request: text is null or empty");
+            Logger.getGlobal().info("bad request: outlineMediaComment text is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        Logger.getGlobal().info("save outline media comment successful");
+        Logger.getGlobal().info("save outlineMediaComment with id: " + data.getId());
         return ResponseEntity.ok(outlineMediaCommentRepository.save(data));
     }
     @DeleteMapping("${mapping.outlineMediaComment.delete}/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
         outlineMediaCommentRepository.deleteById(id);
-        Logger.getGlobal().info("delete outline media comment successful");
+        Logger.getGlobal().info("delete outlineMediaComment with id: " + id);
         return ResponseEntity.ok().build();
     }
 }
