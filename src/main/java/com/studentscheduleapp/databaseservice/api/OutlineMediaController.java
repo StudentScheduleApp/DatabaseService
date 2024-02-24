@@ -35,6 +35,10 @@ public class OutlineMediaController {
             log.warn("bad request: outlineMedia imageUrl is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
+        if(data.getImageUrl().length() > 255) {
+            log.warn("bad request: outlineMedia imageUrl length > 255");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
         OutlineMedia d = outlineMediaRepository.save(data);
         log.info("save outlineMedia with id: " + d.getId());
         return ResponseEntity.ok(d);

@@ -35,6 +35,14 @@ public class ScheduleTemplateController {
             log.warn("bad request: scheduleTemplate name is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
+        if(data.getName().length() > 255) {
+            log.warn("bad request: scheduleTemplate name length > 255");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        if(data.getComment() != null && data.getComment().length() > 255) {
+            log.warn("bad request: scheduleTemplate comment length > 255");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
         ScheduleTemplate d = scheduleTemplateRepository.save(data);
         log.info("save scheduleTemplate with id: " + d.getId());
         return ResponseEntity.ok(d);

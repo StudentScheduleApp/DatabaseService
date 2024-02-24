@@ -45,6 +45,26 @@ public class UserController {
             log.warn("bad request: user lastName is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
+        if(data.getEmail().length() > 255) {
+            log.warn("bad request: user email length > 255");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        if(data.getPassword().length() > 255) {
+            log.warn("bad request: user password length > 255");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        if(data.getFirstName().length() > 255) {
+            log.warn("bad request: user firstName length > 255");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        if(data.getLastName().length() > 255) {
+            log.warn("bad request: user lastName length > 255");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        if(data.getAvaUrl() != null && data.getAvaUrl().length() > 255) {
+            log.warn("bad request: user avaUrl length > 255");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
         User d = userRepository.save(data);
         log.info("save user with id: " + d.getId());
         return ResponseEntity.ok(d);

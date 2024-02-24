@@ -35,6 +35,10 @@ public class OutlineMediaCommentController {
             log.warn("bad request: outlineMediaComment text is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
+        if(data.getText().length() > 255) {
+            log.warn("bad request: outlineMediaComment text length > 255");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
         OutlineMediaComment d = outlineMediaCommentRepository.save(data);
         log.info("save outlineMediaComment with id: " + d.getId());
         return ResponseEntity.ok(d);

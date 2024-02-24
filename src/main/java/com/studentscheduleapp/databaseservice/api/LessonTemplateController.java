@@ -6,6 +6,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +31,10 @@ public class LessonTemplateController {
     }
     @PostMapping("${mapping.lessonTemplate.save}")
     public ResponseEntity<LessonTemplate> save(@RequestBody LessonTemplate data){
+        if(data.getComment() != null && data.getComment().length() > 255) {
+            log.warn("bad request: lessonTemplate comment length > 255");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
         LessonTemplate d = lessonTemplateRepository.save(data);
         log.info("save lessonTemplate with id: " + d.getId());
         return ResponseEntity.ok(d);

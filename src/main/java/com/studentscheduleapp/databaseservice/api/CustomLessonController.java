@@ -35,6 +35,14 @@ public class CustomLessonController {
             log.warn("bad request: customLesson name is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
+        if(data.getName().length() > 255) {
+            log.warn("bad request: customLesson name length > 255");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        if(data.getTeacher() != null && data.getTeacher().length() > 255) {
+            log.warn("bad request: customLesson teacher length > 255");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
         CustomLesson d = customLessonRepository.save(data);
         log.info("save customLesson with id: " + d.getId());
         return ResponseEntity.ok(d);

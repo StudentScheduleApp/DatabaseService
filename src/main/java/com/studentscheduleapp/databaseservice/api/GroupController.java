@@ -29,6 +29,14 @@ public class GroupController {
             log.warn("bad request: group name is null or empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
+        if(data.getName().length() > 255) {
+            log.warn("bad request: group name length > 255");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        if(data.getAvaUrl() != null && data.getAvaUrl().length() > 255) {
+            log.warn("bad request: group avaUrl length > 255");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
         Group d = groupRepository.save(data);
         log.info("save group with id: " + d.getId());
         return ResponseEntity.ok(d);
