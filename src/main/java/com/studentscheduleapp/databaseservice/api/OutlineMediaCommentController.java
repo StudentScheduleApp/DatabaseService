@@ -1,8 +1,6 @@
 package com.studentscheduleapp.databaseservice.api;
 
 import com.studentscheduleapp.databaseservice.data.repositories.OutlineMediaCommentRepository;
-import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
-import com.studentscheduleapp.databaseservice.data.tablemodels.OutlineMedia;
 import com.studentscheduleapp.databaseservice.data.tablemodels.OutlineMediaComment;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

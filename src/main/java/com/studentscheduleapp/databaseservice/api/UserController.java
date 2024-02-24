@@ -1,8 +1,6 @@
 package com.studentscheduleapp.databaseservice.api;
 
-import com.studentscheduleapp.databaseservice.data.repositories.CustomLessonRepository;
 import com.studentscheduleapp.databaseservice.data.repositories.UserRepository;
-import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
 import com.studentscheduleapp.databaseservice.data.tablemodels.User;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -11,8 +9,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 public class UserController {

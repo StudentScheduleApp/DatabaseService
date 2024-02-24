@@ -1,9 +1,6 @@
 package com.studentscheduleapp.databaseservice.api;
 
-import com.studentscheduleapp.databaseservice.data.repositories.MemberRepository;
 import com.studentscheduleapp.databaseservice.data.repositories.OutlineRepository;
-import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
-import com.studentscheduleapp.databaseservice.data.tablemodels.Member;
 import com.studentscheduleapp.databaseservice.data.tablemodels.Outline;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

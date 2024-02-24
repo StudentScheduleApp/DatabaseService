@@ -1,7 +1,6 @@
 package com.studentscheduleapp.databaseservice.security;
 
 
-import com.studentscheduleapp.databaseservice.api.UserController;
 import com.studentscheduleapp.databaseservice.properties.GlobalProperties;
 import com.studentscheduleapp.databaseservice.services.AuthorizeServiceService;
 import lombok.RequiredArgsConstructor;

@@ -1,15 +1,11 @@
 package com.studentscheduleapp.databaseservice.api;
 
-import com.studentscheduleapp.databaseservice.data.repositories.MemberRepository;
 import com.studentscheduleapp.databaseservice.data.repositories.SpecificLessonRepository;
-import com.studentscheduleapp.databaseservice.data.tablemodels.CustomLesson;
-import com.studentscheduleapp.databaseservice.data.tablemodels.Member;
 import com.studentscheduleapp.databaseservice.data.tablemodels.SpecificLesson;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
