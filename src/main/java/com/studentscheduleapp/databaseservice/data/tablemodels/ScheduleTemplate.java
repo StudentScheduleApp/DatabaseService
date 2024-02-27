@@ -1,4 +1,5 @@
 package com.studentscheduleapp.databaseservice.data.tablemodels;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

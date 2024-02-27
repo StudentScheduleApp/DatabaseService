@@ -15,23 +15,25 @@ import java.util.List;
 @RestController
 public class SpecificLessonController {
 
+    private static final Logger log = LogManager.getLogger(SpecificLessonController.class);
     @Autowired
     private SpecificLessonRepository specificLessonRepository;
-    private static final Logger log = LogManager.getLogger(SpecificLessonController.class);
 
     @GetMapping("${mapping.specificLesson.getById}/{id}")
-    public ResponseEntity<SpecificLesson> getById(@PathVariable("id") long id){
+    public ResponseEntity<SpecificLesson> getById(@PathVariable("id") long id) {
         log.info("get specificLesson with id: " + id);
         return ResponseEntity.ok(specificLessonRepository.findById(id).orElse(null));
     }
+
     @GetMapping("${mapping.specificLesson.getByGroupId}/{id}")
-    public ResponseEntity<List<SpecificLesson>> getByGroupId(@PathVariable("id") long id){
+    public ResponseEntity<List<SpecificLesson>> getByGroupId(@PathVariable("id") long id) {
         log.info("get specificLesson with groupId: " + id);
         return ResponseEntity.ok(specificLessonRepository.findByGroupId(id));
     }
+
     @PostMapping("${mapping.specificLesson.save}")
-    public ResponseEntity<SpecificLesson> save(@RequestBody SpecificLesson data){
-        if(data.getComment() != null && data.getComment().length() > 255) {
+    public ResponseEntity<SpecificLesson> save(@RequestBody SpecificLesson data) {
+        if (data.getComment() != null && data.getComment().length() > 255) {
             log.warn("bad request: specificLesson comment length > 255");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
@@ -39,12 +41,13 @@ public class SpecificLessonController {
         log.info("save specificLesson with id: " + d.getId());
         return ResponseEntity.ok(d);
     }
+
     @DeleteMapping("${mapping.specificLesson.delete}/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable("id") long id){
+    public ResponseEntity<Void> deleteById(@PathVariable("id") long id) {
         try {
             specificLessonRepository.deleteById(id);
             log.info("delete specificLesson with id: " + id);
-        } catch (EmptyResultDataAccessException e){
+        } catch (EmptyResultDataAccessException e) {
             log.warn("delete specificLesson with id: " + id + " failed: entity not exists");
         }
         return ResponseEntity.ok().build();
